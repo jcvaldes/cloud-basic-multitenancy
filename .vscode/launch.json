@@ -4,35 +4,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "nestjs-modular",
-      "args": ["${workspaceFolder}/src/main.ts"],
+      "name": "Nest.js",
       "runtimeArgs": [
-        "--nolazy",
         "-r",
         "ts-node/register",
         "-r",
         "tsconfig-paths/register"
       ],
-      "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
-      "outputCapture": "std",
-      "envFile": "${workspaceFolder}/.env",
-      "autoAttachChildProcesses": true,
-    },
-    {
-      "name": "Debug Jest Tests",
-      "type": "node",
-      "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand",
-        "--coverage",
-        "false"
-      ],
-      "console": "integratedTerminal",
-      "envFile": "${workspaceFolder}/.env",
-      "internalConsoleOptions": "neverOpen"
+      "args": ["${workspaceFolder}/src/main.ts"],
+      "autoAttachChildProcesses": true
     }
   ]
 }

@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TenancyModule } from './tenancy/tenancy.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConnectionOptions } from 'typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ConnectionOptions } from 'typeorm';
         } as ConnectionOptions;
       },
     }),
+    UserModule,
   ],
   controllers: [],
   providers: [],

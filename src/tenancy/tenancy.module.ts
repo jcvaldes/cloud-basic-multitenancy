@@ -11,11 +11,14 @@ import { Connection, createConnection, getConnection } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { Tenancy } from './entities/tenancy.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from '../user/user.entity';
+import { TenantProvider } from './tenancy.provider';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Tenancy])],
-  providers: [TenancyService],
+  providers: [TenancyService, TenantProvider],
   controllers: [TenancyController],
+  exports: [TenantProvider],
 })
 export class TenancyModule {
   constructor(
@@ -53,7 +56,8 @@ export class TenancyModule {
             username: this.configService.get('DB_USER'),
             password: this.configService.get('DB_PASSWORD'),
             database: tenant.name,
-            entities: [], // TODO: add User entity
+            // Estas entidades que ponemos van a ser compartidos con todos los tenants
+            entities: [User],
             ssl: true,
             synchronize: true,
           });
